@@ -1,25 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from 'react';
+import TaskForm from "./components/TaskForm";
+import {Button, Container} from "@mui/material";
+import ToDoList from "./components/ToDoList";
+import {fakeTasks} from "./__fixtures__/fakeTasks"
+
+export type Task = {
+    name: string;
+    isDone: boolean
+}
+
+export type Tasks = Task[];
+
+type State = {
+    newTask: string;
+    tasks: Tasks
+}
+
+const initialState: State = {
+    newTask: '',
+    tasks: []
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    const [tasks, setTasks] = useState<Tasks>([]);
+
+    useEffect(() => setTasks(fakeTasks), [])
+
+    const handleTask = (task: Task): void => {
+        if (task.name.length > 0) {
+            setTasks([task, ...tasks]);
+        }
+    };
+
+    return (
+        <Container maxWidth="md">
+            <TaskForm
+                getTask={handleTask}
+            />
+            <ToDoList tasks={tasks}/>
+
+        </Container>
   );
 }
 
