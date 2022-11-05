@@ -1,7 +1,7 @@
 export const fakeTasks = [
     {
         name: "first task",
-        isDone: true,
+        isDone: false,
     },
     {
         name: "Second task",
@@ -9,7 +9,7 @@ export const fakeTasks = [
     },
     {
         name: "Third task",
-        isDone: true,
+        isDone: false,
     },
     {
         name: "Fourth task",
@@ -17,6 +17,6 @@ export const fakeTasks = [
     },
     {
         name: "Five task",
-        isDone: true,
+        isDone: false,
     },
 ]

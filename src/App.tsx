@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
-import TaskForm from "./components/TaskForm";
-import {Button, Container} from "@mui/material";
-import ToDoList from "./components/ToDoList";
-import {fakeTasks} from "./__fixtures__/fakeTasks"
+import React, { useEffect, useState } from 'react';
+import { Container } from '@mui/material';
+import TaskForm from './components/TaskForm';
+import ToDoList from './components/ToDoList';
+import { fakeTasks } from './__fixtures__/fakeTasks.js';
 
 export type Task = {
     name: string;
@@ -11,29 +11,19 @@ export type Task = {
 
 export type Tasks = Task[];
 
-type State = {
-    newTask: string;
-    tasks: Tasks
-}
-
-const initialState: State = {
-    newTask: '',
-    tasks: []
-}
-
 function App() {
-    const [tasks, setTasks] = useState<Tasks>([]);
+  const [tasks, setTasks] = useState<Tasks>([]);
 
-    useEffect(() => setTasks(fakeTasks), [])
+  useEffect(() => setTasks(fakeTasks), []);
 
-    const handleTask = (task: Task): void => {
-        if (task.name.length > 0) {
-            setTasks([task, ...tasks]);
-        }
-    };
+  const handleTask = (task: Task): void => {
+    if (task.name.length > 0) {
+      setTasks([task, ...tasks]);
+    }
+  };
 
-    return (
-        <Container maxWidth="md">
+  return (
+        <Container maxWidth="sm">
             <TaskForm
                 getTask={handleTask}
             />

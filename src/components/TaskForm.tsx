@@ -1,28 +1,28 @@
 import TextField from '@mui/material/TextField';
-import {Button, Container, Typography} from "@mui/material";
-import React, {useState} from "react";
-import {Task} from "../App";
-import IconButton from '@mui/material/IconButton';
-import DirectionsIcon from '@mui/icons-material/Directions';
-
+import { Button, Container, Typography } from '@mui/material';
+import React, { useState } from 'react';
+import { Task } from '../App';
 
 const TaskForm = ({ getTask }: { getTask: (task: Task) => void }) => {
+  const [value, setValue] = useState<string>('');
 
-    const [value, setValue] = useState<string>('');
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(e.target.value)
-    };
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    getTask({ name: value, isDone: false });
+    setValue('');
+  };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        getTask({ name: value, isDone: false });
-        setValue('');
-    }
-
-    return (
+  return (
             <form onSubmit={handleSubmit}>
-                <Typography variant="h1" gutterBottom>
+                <Typography
+                    variant="h3"
+                    gutterBottom
+                    sx={{ p: '10px' }}
+                >
                     ToDo
                 </Typography>
                 <Container>
@@ -30,18 +30,18 @@ const TaskForm = ({ getTask }: { getTask: (task: Task) => void }) => {
                         id="task"
                         variant="outlined"
                         label="Task field"
-                        type="task"
+                        type="text"
                         name="name"
                         onChange={handleChange}
                         value={value}
+                        autoFocus
+                        placeholder="New task"
+                        size="small"
                     />
-                    <IconButton color="primary" sx={{ p: '15px' }} aria-label="directions">
-                        <DirectionsIcon />
-                    </IconButton>
-                    <Button type="submit">Add</Button>
+                    <Button type="submit" sx={{ p: '7px' }}>Add</Button>
                 </Container>
             </form>
-    );
-}
+  );
+};
 
 export default TaskForm;
