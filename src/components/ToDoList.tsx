@@ -14,7 +14,7 @@ export default function ToDoList({ tasks }: { tasks: Tasks }) {
 
     type filterOption = {
         [key: string]: any,
-    }
+    };
     const filterMap: filterOption = {
       All: () => true,
       Done: (task: Task) => task.isDone,
