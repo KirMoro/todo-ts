@@ -28,7 +28,6 @@ function App() {
                 getTask={handleTask}
             />
             <ToDoList tasks={tasks}/>
-
         </Container>
   );
 }

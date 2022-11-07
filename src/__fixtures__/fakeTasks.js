@@ -1,22 +1,22 @@
 export const fakeTasks = [
     {
-        name: "first task",
+        name: "Сделать тестовое",
         isDone: false,
     },
     {
-        name: "Second task",
+        name: "Покрыть тестами",
         isDone: false,
     },
     {
-        name: "Third task",
+        name: "Попасть на собеседование",
         isDone: false,
     },
     {
-        name: "Fourth task",
+        name: "Не налажать на собеседовании",
         isDone: false,
     },
     {
-        name: "Five task",
+        name: "Начать стажировку",
         isDone: false,
     },
 ]
